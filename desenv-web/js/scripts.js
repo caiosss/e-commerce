@@ -8,3 +8,25 @@ produto.forEach((p, index) => {
     price[index].textContent = "R$" + p.preco 
 })
 
+let carrinho = []
+
+function addAoCarrinho(produtoIndex) {
+    const item = produto[produtoIndex]
+    carrinho.push(item)
+
+    atualizaContador()
+}
+
+function atualizaContador() {
+    const contadorElemento = document.getElementById("cart-count")
+    contadorElemento.textContent = carrinho.length
+}
+
+document.querySelectorAll(".add-to-car").forEach((button, index) => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault()
+        addAoCarrinho(index)
+    })
+})
+
+
