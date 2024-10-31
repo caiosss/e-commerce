@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+
+#loginDiv{
+    margin: 115px 30% 0 30%;
+    background-color: rgb(33, 37, 41);
+    height: 600px;
+    width: 40%;
+    border-radius: 2.5%;
+}
+
+.loginTittle{
+    color: aliceblue;
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+    margin: 0 30% 30px 30%;
+    padding-top: 50px;
+    background-color: rgb(33, 37, 41);
+}
+
+.login{
+    padding-top: 30px;
+    background-color: rgb(33, 37, 41);
+}
+
+label{
+    margin: 0 0 -15px 14.5%;
+    display: block;
+    color: aliceblue;
+}
+.inputDiv{
+    display: flex;
+}
+.padlock{
+    margin: 30px 0 0 80px;
+}
+.icon{
+    margin: 30px 0 0 80px;
+}
+
+.inputMsg{
+    background-color: white;
+    width: 100%;
+    margin: 20px 13% 40px .5%;
+    height: 40px;
+    border-color: white;
+    color: white;
+    border-radius: 5px;
+}
+
+button{
+    height: 50px;
+    width: 76%;
+    margin: 20px 12% 0 12%;
+    background-color: #0061EF;
+    color: aliceblue;
+    border-style: hidden;
+    border-radius: 100px;
+    transition: .3s;
+}
+button:hover{
+    background-color: blue;
+    cursor: pointer;
+    
+}
+
+
