@@ -7,6 +7,6 @@ const produto = [
     { nome: "Vestido", preco: 150.00 },
     { nome: "Moletom", preco: 150.00 },
     { nome: "Short Jeans", preco: 150.00 },
-]
+];
 
-export default produto
+export default produto;
