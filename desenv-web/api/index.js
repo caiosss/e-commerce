@@ -13,7 +13,7 @@ app.use(express.json());
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '', //POR A SENHA DE VOCES
+    password: 'CaioDavi@1726', //POR A SENHA DE VOCES
     database: 'ecommerce'
 });
 
@@ -82,14 +82,15 @@ app.post('/api/login', async (req,res) => {
             return res.status(401).json({mensagem: 'Email ou senha inválidos!'});
         }
 
-        const token = jwt.sign({id: cliente.id, nome: cliente.nome, email: cliente.email}, 'token_cliente', {
+        const token = jwt.sign({id: cliente.idcliente, nome: cliente.nome, email: cliente.email}, 'token_cliente', {
             expiresIn: '1h'
         });
 
         res.json({ 
             token,
             usuario: {
-                nome: cliente.nome
+                nome: cliente.nome,
+                id: cliente.idcliente,
             }
          });
 
@@ -110,4 +111,69 @@ const authenticateToken = (req, res, next) => {
 
 app.get('/api/protegida', authenticateToken, (req, res) => {
     res.json({ mensagem: 'Rota protegida', user: req.user });
+});
+
+app.post('/api/pedido', (req,res) => {
+    try {
+        const authHeader = req.headers['authorization'];
+        const token = authHeader && authHeader.split(' ')[1];
+
+        if(!token) {
+            return res.status(401).json({mensagem: 'Acesso negado'});
+        }
+
+        const user = jwt.verify(token, 'token_cliente');
+
+        if (!user.id) {
+            return res.status(400).json({ mensagem: 'ID de cliente não encontrado no token!' });
+        }
+
+        const { produtos, valor_total, metodo_pagamento } = req.body;
+
+        if (!produtos || produtos.length === 0) {
+            return res.status(400).json({ mensagem: 'Nenhum produto no pedido!' });
+        }
+
+        if (!valor_total || !metodo_pagamento) {
+            return res.status(400).json({ mensagem: 'Dados incompletos! Por favor, envie o valor e o método de pagamento.' });
+        }
+
+        const dataPedido = new Date();
+
+        const queryPedido = `INSERT INTO pedido(cliente_idcliente, data_pedido) VALUES(?,?)`;
+        db.query(queryPedido, [user.id, dataPedido], (err, result) => {
+            if (err) {
+                return res.status(500).json({ mensagem: 'Erro ao criar pedido', erro: err });
+            }
+
+            // Obtém o ID do pedido criado
+            const id_pedido = result.insertId;
+
+            // Converte o array de produtos para JSON string
+            const produtosJSON = JSON.stringify(produtos);
+
+            // Insere os itens do pedido na tabela `itens_pedido`
+            const queryItensPedido = `INSERT INTO itens_pedido (id_pedido, produtos) VALUES (?, ?)`;
+
+            db.query(queryItensPedido, [id_pedido, produtosJSON], (err, result) => {
+                if (err) {
+                    return res.status(500).json({ mensagem: 'Erro ao inserir itens do pedido', erro: err });
+                }
+
+                res.status(201).json({
+                    mensagem: 'Pedido criado com sucesso!',
+                    pedido: {
+                        idpedido: id_pedido,
+                        produtos: produtos,
+                        metodo_pagamento,
+                        valor_total,
+                        data_pedido: dataPedido
+                    }
+                });
+            });
+        });
+    } catch (err) {
+        console.error('Erro ao processar pedido:', err);
+        res.status(500).json({ mensagem: 'Erro interno no servidor', erro: err.message });
+    }
 });
