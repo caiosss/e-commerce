@@ -1,85 +1,117 @@
-*{
+/* Reset básico */
+* {
     margin: 0;
     padding: 0;
-    list-style: none;
-    text-decoration: none;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
-
-#loginDiv{
-    margin: 115px 30% 0 30%;
-    background-color: rgb(33, 37, 41);
-    height: 600px;
-    width: 40%;
-    border-radius: 2.5%;
-}
-
-.loginTittle{
-    color: aliceblue;
-    font-weight: bold;
-    font-size: 50px;
-    text-align: center;
-    margin: 0 30% 30px 30%;
-    padding-top: 50px;
-    background-color: rgb(33, 37, 41);
-}
-
-.login{
-    padding-top: 30px;
-    background-color: rgb(33, 37, 41);
-}
-
-label{
-    margin: 0 0 -15px 14.5%;
-    display: block;
-    color: aliceblue;
-}
-.inputDiv{
-    display: flex;
-}
-.padlock{
-    margin: 30px 0 0 80px;
-}
-.icon{
-    margin: 30px 0 0 80px;
-}
-
-.inputMsg{
-    background-color: white;
-    width: 100%;
-    margin: 20px 13% 40px .5%;
-    height: 40px;
-    border-color: white;
-    color: black;
-    border-radius: 5px;
-    font-size: 1.4rem;
-}
-
-button{
-    height: 50px;
-    width: 100%;
-    margin: 20px 12% 0 12%;
-    background-color: #0061EF;
-    color: aliceblue;
-    border-style: hidden;
-    border-radius: 100px;
-    transition: .3s;
-}
-button:hover{
-    background-color: blue;
-    cursor: pointer;
-}
-
-.cadastro {
+body {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-    font-size: 1.4rem;
-    color: white;
+    align-items: center;
+    height: 100vh;
+    background-color: #212529;
+    color: #f8f9fa;
 }
 
-.cadastro > a {
+/* Container principal */
+#loginDiv {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    background-color: #343a40;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+/* Título do login */
+.loginTittle {
+    font-size: 2rem;
+    color: #f8f9fa;
+    margin-bottom: 20px;
+}
+
+/* Formulário de login */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Label dos campos */
+label {
+    font-size: 1rem;
+    color: #adb5bd;
+    text-align: left;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Div para os campos com ícones */
+.inputDiv {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #495057;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.inputMsg {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    color: #f8f9fa;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.inputMsg::placeholder {
+    color: #adb5bd;
+}
+
+/* Ícones nos campos */
+.inputDiv img {
+    margin-right: 10px;
+    filter: brightness(0.8);
+}
+
+/* Botão de envio */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    color: #212529;
+    background-color: #f8f9fa;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button[type="submit"]:hover {
+    background-color: #e9ecef;
+    transform: scale(1.02);
+}
+
+/* Link de cadastro */
+.cadastro {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #ced4da;
+}
+
+.cadastro a {
+    color: #f8f9fa;
     text-decoration: none;
-    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
+.cadastro a:hover {
+    color: #adb5bd;
+}

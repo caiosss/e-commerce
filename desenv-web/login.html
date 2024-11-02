@@ -5,27 +5,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
         <link rel="stylesheet" href="./css/login.css">
-        <script defer src="./api/index.js"></script>
+        <script defer src="./js/login.js"></script>
     </head>
     <body>
         
         <div id="loginDiv">
             <h1 class="loginTittle">Log in</h1>
             <div class="login">
-                <form method="post" action="http://localhost:3000/api/cadastro" style="background-color: rgb(33, 37, 41);">
+                <form method="post" id="loginForm">
                     <label for="email">E-mail</label>
                     <div class="inputDiv">
-                        <img class="padlock" width="23px" height="23px" src="https://img.icons8.com/?size=100&id=10641&format=png&color=ffffff" alt="lock-2"/>
+                        <img class="icon" width="23px" height="23px" src="https://img.icons8.com/?size=100&id=23265&format=png&color=ffffff" alt="icon"/>
                         <input required class="inputMsg" type="email" name="email" id="email" placeholder="Email">
                     </div>
                     <label for="password">Senha</label>
                     <div class="inputDiv">
-                        <img class="icon" width="23px" height="23px" src="https://img.icons8.com/?size=100&id=23265&format=png&color=ffffff" alt="icon"/>
+                        <img class="padlock" width="23px" height="23px" src="https://img.icons8.com/?size=100&id=10641&format=png&color=ffffff" alt="lock-2"/>
                         <input required class="inputMsg" type="password" name="password" id="password" placeholder="Senha">
                     </div>
-                    <button type="submit">Cadastrar</button>
+                    <button type="submit">Entrar</button>
                 </form>          
-                <span class="cadastro">Não possui conta?<a href="./cadastro.html"> Cadastre-se</a>!</span>
+                <span class="cadastro">Não possui conta? <a href="./cadastro.html">Cadastre-se</a>!</span>
             </div>
         </div>
 

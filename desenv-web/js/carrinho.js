@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function calcularTotal() {
         const total = carrinho.reduce((acc, item) => acc + item.preco, 0);
+        localStorage.setItem('total', total);
         cartTotalElement.textContent = total.toFixed(2);
     }
 
