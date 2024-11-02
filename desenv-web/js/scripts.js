@@ -54,8 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
+    localStorage.clear();
     window.location.href = 'index.html';
 }
 

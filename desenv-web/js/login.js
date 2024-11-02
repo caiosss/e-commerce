@@ -18,6 +18,7 @@ document.getElementById("loginForm").addEventListener("submit", async (event) =>
         if(response.ok){
             localStorage.setItem('token', data.token);
             localStorage.setItem('username', data.usuario.nome);
+            localStorage.setItem('id', data.usuario.id);
             alert('Login bem-sucedido!');
 
             window.location.href = './index.html';
