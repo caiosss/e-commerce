@@ -65,7 +65,7 @@ document.getElementById("checkoutForm").addEventListener("submit", function(even
             alert('Pedido realizado com sucesso!');
             localStorage.removeItem('total');
             localStorage.removeItem('carrinho');
-            window.location.href = './index.html';
+            window.location.href = './feedback.html';
         } else {
             alert('Erro ao realizar o pedido: ' + data.mensagem);
         }

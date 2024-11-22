@@ -10,6 +10,8 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
+export default app;
+
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -176,4 +178,22 @@ app.post('/api/pedido', (req,res) => {
         console.error('Erro ao processar pedido:', err);
         res.status(500).json({ mensagem: 'Erro interno no servidor', erro: err.message });
     }
+});
+
+app.post('/api/feedback', (req, res) => {
+    const { comentario, avaliacao_estrelas } = req.body;
+
+    // if (!comentario || !avaliacao_estrelas) {
+    //     return res.status(400).json({ mensagem: 'Por favor, forneça comentário e avaliação em estrelas!' });
+    // }
+
+    const query = 'INSERT INTO feedback (comentario, avaliacao_estrelas) VALUES (?, ?)';
+
+    db.query(query, [comentario, avaliacao_estrelas], (err, result) => {
+        if (err) {
+            return res.status(500).json({ mensagem: 'Erro ao inserir feedback', erro: err });
+        }
+
+        res.status(201).json({ mensagem: 'Feedback enviado com sucesso!', feedback: { comentario, avaliacao_estrelas } });
+    });
 });

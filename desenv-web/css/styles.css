@@ -632,6 +632,7 @@ progress {
 }
 
 .container,
+.container-product
 .container-fluid,
 .container-xxl,
 .container-xl,
@@ -648,27 +649,27 @@ progress {
 }
 
 @media (min-width: 576px) {
-  .container-sm, .container {
+  .container-sm, .container, .container-product {
     max-width: 540px;
   }
 }
 @media (min-width: 768px) {
-  .container-md, .container-sm, .container {
+  .container-md, .container-sm, .container, .container-product {
     max-width: 720px;
   }
 }
 @media (min-width: 992px) {
-  .container-lg, .container-md, .container-sm, .container {
+  .container-lg, .container-md, .container-sm, .container, .container-product {
     max-width: 960px;
   }
 }
 @media (min-width: 1200px) {
-  .container-xl, .container-lg, .container-md, .container-sm, .container {
+  .container-xl, .container-lg, .container-md, .container-sm, .container, .container-product {
     max-width: 1140px;
   }
 }
 @media (min-width: 1400px) {
-  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container, .container-product {
     max-width: 1320px;
   }
 }
@@ -3760,6 +3761,7 @@ textarea.form-control-lg {
   padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x);
 }
 .navbar > .container,
+.navbar > .container-product,
 .navbar > .container-fluid,
 .navbar > .container-sm,
 .navbar > .container-md,
@@ -10953,5 +10955,13 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.input-filter {
+  width: 500px; 
+  border-radius: 10px; 
+  border: 1px solid black; 
+  margin-top: 5px; 
+  margin-left: 10px;
 }
 

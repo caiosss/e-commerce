@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <script defer src="./js/feedback.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        #rating {
+            direction: rtl;
+            unicode-bidi: bidi-override;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        #rating > input {
+            display: none;
+        }
+
+        #rating > label {
+            font-size: 2em;
+            color: #ddd;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        #rating > input:checked ~ label {
+            color: #f5b301;
+        }
+
+        #rating > label:hover,
+        #rating > label:hover ~ label {
+            color: #ffca08;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form id="feedbackForm"">
+        <h1>Feedback</h1>
+        <label for="feedback">Seu Feedback:</label>
+        <textarea id="feedback" name="feedback" rows="4" cols="50" placeholder="Escreva seu feedback aqui..."></textarea>
+
+        <label for="rating">Sua Avaliação:</label>
+        <div id="rating">
+            <input type="radio" id="star5" name="rating" value="5">
+            <label for="star5" title="5 stars">☆</label>
+            <input type="radio" id="star4" name="rating" value="4">
+            <label for="star4" title="4 stars">☆</label>
+            <input type="radio" id="star3" name="rating" value="3">
+            <label for="star3" title="3 stars">☆</label>
+            <input type="radio" id="star2" name="rating" value="2">
+            <label for="star2" title="2 stars">☆</label>
+            <input type="radio" id="star1" name="rating" value="1">
+            <label for="star1" title="1 star">☆</label>
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

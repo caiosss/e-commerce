@@ -15,12 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
             cartItem.className = "cart-item";
             cartItem.innerHTML = `
                 <span class="item-nome">${item.nome}</span>
-                <span class="item-preco">R$ ${item.preco.toFixed(2)}</span>
+                <span class="item-preco">R$ ${item.preco.toFixed(2)}</span>               
             `;
             cartItemsContainer.appendChild(cartItem);
         });
         calcularTotal(); 
     }
-
     exibeProdutos();
 })
